@@ -3,6 +3,11 @@ import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { status } from './middlewares/status'
+import { createTodo } from './middlewares/todo/createTodo'
+import { deleteTodo } from './middlewares/todo/deleteTodo'
+import { getAllTodos } from './middlewares/todo/getAllTodos'
+import { getTodo } from './middlewares/todo/getTodo'
+import { updateTodo } from './middlewares/todo/updateTodo'
 import { validate } from './middlewares/validate'
 
 const TIMEOUT_MS = 800
@@ -47,6 +52,21 @@ export default new Service({
     // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
     status: method({
       GET: [validate, status],
+    }),
+    getAllTodos: method({
+      GET: [getAllTodos],
+    }),
+    getTodo: method({
+      GET: [getTodo],
+    }),
+    createTodo: method({
+      POST: [createTodo],
+    }),
+    updateTodo: method({
+      PUT: [updateTodo],
+    }),
+    deleteTodo: method({
+      DELETE: [deleteTodo],
     }),
   },
 })

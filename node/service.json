@@ -9,6 +9,26 @@
     "status": {
       "path": "/_v/status/:code",
       "public": true
+    },
+    "getAllTodos": {
+      "path": "/_v/getAllTodos",
+      "public": true
+    },
+    "getTodo": {
+      "path": "/_v/getTodo/:id",
+      "public": true
+    },
+    "createTodo": {
+      "path": "/_v/createTodo",
+      "public": true
+    },
+    "updateTodo": {
+      "path": "/_v/updateTodo/:id",
+      "public": true
+    },
+    "deleteTodo": {
+      "path": "/_v/deleteTodo/:id",
+      "public": true
     }
   }
 }
