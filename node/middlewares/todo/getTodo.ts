@@ -3,16 +3,17 @@ export async function getTodo(ctx: Context, next: () => Promise<any>) {
     vtex: {
       route: { params },
     },
+    clients: { todo: todoClient },
   } = ctx
 
   // ctx.vtex.route.params
 
   const { id } = params
 
-  console.info('Id:', id)
+  const resp = await todoClient.get(id as string)
 
   ctx.status = 200
-  ctx.body = { id: 123456, description: 'Imlpementar método getAllTodos' }
+  ctx.body = resp
   ctx.set('Cache-Control', 'no-cache')
 
   await next()

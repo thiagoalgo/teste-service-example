@@ -3,16 +3,17 @@ export async function deleteTodo(ctx: Context, next: () => Promise<any>) {
     vtex: {
       route: { params },
     },
+    clients: { todo: todoClient },
   } = ctx
 
   // ctx.vtex.route.params
 
   const { id } = params
 
-  console.info('Id:', id)
+  await todoClient.delete(id as string)
 
   ctx.status = 200
-  ctx.body = { id: 123456 }
+  ctx.body = { id }
   ctx.set('Cache-Control', 'no-cache')
 
   await next()

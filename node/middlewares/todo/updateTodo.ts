@@ -5,6 +5,7 @@ export async function updateTodo(ctx: Context, next: () => Promise<any>) {
     vtex: {
       route: { params },
     },
+    clients: { todo: todoClient },
   } = ctx
 
   // ctx.vtex.route.params
@@ -13,14 +14,12 @@ export async function updateTodo(ctx: Context, next: () => Promise<any>) {
 
   const { id } = params
 
-  console.info('Id:', id)
-
   const data = await parser(ctx.req)
 
-  console.info(data)
+  const resp = await todoClient.update(id as string, data)
 
   ctx.status = 200
-  ctx.body = data
+  ctx.body = resp
   ctx.set('Cache-Control', 'no-cache')
 
   await next()
