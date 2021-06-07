@@ -1,6 +1,6 @@
 import { MasterData } from '@vtex/api'
 
-import type { TodoInput } from '../typings/todo'
+import type { TodoInput } from '../typings/todoInput'
 
 export default class Todo extends MasterData {
   public async get(id: string): Promise<any> {
